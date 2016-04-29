@@ -1,14 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>YallaNotlob</title>
+  <title>Blog2</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<div class="row">
+		<div class="col-md-12">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+					 
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+					</button> <a class="navbar-brand" href="/">Yalla-Notloob</a>
+				</div>
+				
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<a href="/">Home</a>
+						</li>
+						<li >
+							<a href="/orders">Orders</a>
+						</li>
+						<li >
+							<a href="/groups">Groups</a>
+						</li>
+						<li >
+							<a href="/friends">Friends</a>
+						</li>
+					
+						<li >
+							<a href="/users/sign_up">Register</a>
+						</li>
+						<!-- 
+						check auth .....
+						 -->
+						<%= link_to "Sign Out" ,destroy_user_session_path, :method =>'DELETE', class: 'btn btn-primary btn-lg' %>
+								
+					</ul>
+					<form class="navbar-form navbar-left" role="search" method="post"action="<?php echo $this->baseUrl(); ?>/users/search">
+						<div class="form-group">
+							<input class="form-control" type="text" name="search"/>
+						</div> 
+						<button type="submit" class="btn btn-default" >
+							Search
+						</button>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+						<!-- <li>
+							<a href="/about-us">About Us</a>
+						</li> -->
+						
+					
+						        
+					</ul>
+				</div>
+				
+			</nav>
+		</div>
+	</div>
+
+
+<div id="main-container" class="container">
+      <div class="row">
+        <div class="col-xs-3">
+          <h3>Side Bar</h3>
+          <ul>
+          	<li>
+          		>>
+          	</li>
+          	<li>
+          		>>
+          	</li>
+          	<li>
+          		>>
+          	</li>
+          </ul>
+        </div>
+        <div class="col-xs-9">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+
+<footer class="text-center">
+		<div class="row">
+			<div class="col-md-12">
+				
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<p>YalaNotloob.com -- Made By . <small>S-S-D-Z</small> <a href="http://www.YalaNotloob.com" data-toggle="tooltip" title="Visit YalaNotloob">www.YalaNotloob.com</a></p>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</footer>
+
 
 </body>
 </html>

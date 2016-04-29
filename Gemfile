@@ -44,6 +44,15 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
+	
+	#devise gem for sign_up and sign_in
 	gem 'devise'
+
+
+	
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
+
 end
 
