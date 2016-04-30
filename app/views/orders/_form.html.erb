@@ -11,25 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
+  <!-- <div class="field"> -->
+    <!-- <%= f.label :user_id %><br> -->
+    <!-- <%= f.number_field :user_id %> -->
+  <!-- </div> -->
   <div class="field">
     <%= f.label :order_for %><br>
-    <%= f.text_field :order_for %>
+    <!--<%= f.text_field :order_for %>-->
+    <%= f.select :order_for, [['Breakfast','breakfast'],['Lunch','lunch'],['Dinner','dinner']] %>
   </div>
-  <div class="field">
+  <!-- <div class="field">
     <%= f.label :status %><br>
     <%= f.text_field :status %>
-  </div>
+  </div> -->
   <div class="field">
     <%= f.label :resturant %><br>
     <%= f.text_field :resturant %>
   </div>
   <div class="field">
     <%= f.label :menu_image %><br>
-    <%= f.text_field :menu_image %>
+    <!--<%= f.text_field :menu_image %>-->
+    <%= f.file_field :menu_image %>
   </div>
   <div class="actions">
     <%= f.submit %>
