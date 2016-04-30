@@ -1,10 +1,11 @@
 
 	<body>
+<div class="container">		
 		<h1>Home Page</h1>
 		<p><%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
-	<div class="container">	
+	<div>	
 		<table class="table" >
-			<tr>
+			<tr class="danger">
 				<b> Latest Orders </b>
 			</tr>	
 			<%  @orders.each do |order| %>
@@ -17,16 +18,12 @@
 
 		<table class="table" >
 			<tr>
-				<b>Latest Orders</b>
+				<b>Friends Activity</b>
 			</tr>	
-			<%  @orders.each do |order| %>
-			<tr class="success">
-				<td> <%= order.order_for %> </td>
-				<td> <%= order.created_at %> </td>
-			</tr>	
+
 		</table>	
-		<% end %>	
 
 	</div>	
+</div>	
 	</body>	
 
