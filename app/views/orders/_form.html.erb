@@ -36,4 +36,8 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+  <!-- Avatar  -->
+  <%= form_for @order, url: orders_path, html: { multipart: true } do |form| %>
+    <%= form.file_field :avatar %>
+  <% end %>
 <% end %>
