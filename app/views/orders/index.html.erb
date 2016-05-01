@@ -24,8 +24,7 @@
         <td><%= order.resturant %></td>
         <td><%= order.order_members.count%></td>
         <td><%= order.order_members.count(:joined)%></td>
-        <td><%= link_to 'view', order %> <%= link_to 'Finish', order %> <%= link_to 'Cancel', order %></td>
-        
+        <td><%= link_to 'view', order %> <%= link_to 'Finish', order %> <%= link_to 'Cancel', order %></td> 
       </tr>
     <% end %>
   </tbody>
