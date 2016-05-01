@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @order.user_id %>
-</p>
+  <strong>Order Id:</strong>
+  <%= @order.id %>
+</p> 
 
 <p>
   <strong>Order for:</strong>
@@ -24,6 +24,11 @@
   <strong>Menu image:</strong>
   <%= @order.menu_image %>
 </p>
+
+<!--<%= image_tag @order.avatar.url %>-->
+<!--<%= image_tag @order.avatar.url(:medium) %>-->
+<%= image_tag @order.avatar.url(:thumb) %>
+
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
