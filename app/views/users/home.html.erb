@@ -1,8 +1,19 @@
 
-	<body>
+<body>
 <div class="container">		
+
+
+<div id="user_nav">
+  <% if current_user %>
+    Signed in as <strong><%= current_user.name %></strong>!
+	<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+  <% end %>
+</div>
+
+
 		<h1>Home Page</h1>
-		<p><%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
 	<div>	
 		<table class="table" >
 			<tr class="danger">

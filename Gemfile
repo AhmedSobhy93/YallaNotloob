@@ -46,6 +46,9 @@ group :development do
   gem 'spring'
   gem 'omniauth'
   gem 'omniauth-facebook'
+  gem 'omniauth-twitter'
+  gem 'omniauth-digitalocean'
+  gem 'therubyracer'
   gem 'devise'
 end
 

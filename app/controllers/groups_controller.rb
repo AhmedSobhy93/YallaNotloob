@@ -1,10 +1,18 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
+  # def groups
+  #   #list all groups
+  #   @groups = Group.where(user_id: current_user.id)
+  # end
+
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    @group = Group.new
+    @groups = Group.where(user_id: current_user.id)
+    
+    #find_by user_id: current_user.id
   end
 
   # GET /groups/1
