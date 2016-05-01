@@ -30,3 +30,16 @@
          </tr>
          <% end %>
       </table>   -->
+
+=============================>>>>>>>>>>>>>>>
+<div class="col-md-6">
+ <table class="table">
+         <% @group_members.each do |group_member| %>
+         <tr>
+            <td> <%= group_member.id %> </td>
+            <td> <%= group_member.user.name %> </td>
+            <td><%= link_to 'Remove', group_member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         </tr>
+       <% end %>
+      </table>  
+    </div>

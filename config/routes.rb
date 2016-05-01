@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   root 'users#home'
 
   get 'users/home' => 'users#home'
+
   # get "users", controller: 'Users', action: :home
 
   # Example of regular route:

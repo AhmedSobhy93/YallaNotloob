@@ -11,13 +11,14 @@ class GroupsController < ApplicationController
   def index
     @group = Group.new
     @groups = Group.where(user_id: current_user.id)
-    
-    #find_by user_id: current_user.id
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @group = Group.find(params[:id])
+    @GM = GroupMember.where(group_id: params[:id])
+    @group_member = GroupMember.new
   end
 
   # GET /groups/new
@@ -36,7 +37,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
+        format.html { redirect_to groups_url, notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new }
@@ -62,10 +63,14 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
+    if @x 
+    @x.destroy
+   else
     @group.destroy
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
       format.json { head :no_content }
+    end  
     end
   end
 

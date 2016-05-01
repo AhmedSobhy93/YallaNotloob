@@ -24,11 +24,14 @@ class GroupMembersController < ApplicationController
   # POST /group_members
   # POST /group_members.json
   def create
-    @group_member = GroupMember.new(group_member_params)
+    @test = User.where(name: group_member_params[:user_id]).ids
+    @test.each do |t|
+      @group_member = GroupMember.new(user_id: t,group_id: group_member_params[:group_id])
+    end
 
     respond_to do |format|
       if @group_member.save
-        format.html { redirect_to @group_member, notice: 'Group member was successfully created.' }
+        format.html { redirect_to groups_url notice: 'Group member was successfully created.' }
         format.json { render :show, status: :created, location: @group_member }
       else
         format.html { render :new }
@@ -56,7 +59,7 @@ class GroupMembersController < ApplicationController
   def destroy
     @group_member.destroy
     respond_to do |format|
-      format.html { redirect_to group_members_url, notice: 'Group member was successfully destroyed.' }
+      format.html { redirect_to groups_url, notice: 'Group member was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
