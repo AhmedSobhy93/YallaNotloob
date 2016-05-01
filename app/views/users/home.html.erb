@@ -1,0 +1,29 @@
+
+	<body>
+<div class="container">		
+		<h1>Home Page</h1>
+		<p><%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
+	<div>	
+		<table class="table" >
+			<tr class="danger">
+				<b> Latest Orders </b>
+			</tr>	
+			<%  @orders.each do |order| %>
+			<tr class="success">
+				<td> <%= order.order_for %> </td>
+				<td> <%= order.created_at %> </td>
+			</tr>	
+		</table>	
+		<% end %>	
+
+		<table class="table" >
+			<tr>
+				<b>Friends Activity</b>
+			</tr>	
+
+		</table>	
+
+	</div>	
+</div>	
+	</body>	
+
