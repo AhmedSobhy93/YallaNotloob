@@ -54,6 +54,15 @@ class OrdersController < ApplicationController
     end
   end
 
+  def setFinished
+    @order.update(status: 'finished')
+    respond_to do |format|
+      format.html { redirect_to @order }
+      format.json { head :no_content }
+    end
+  end
+
+
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
