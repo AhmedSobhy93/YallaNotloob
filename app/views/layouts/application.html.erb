@@ -1,14 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>YallaNotlob</title>
+  <title>Otlob</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "main" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "autocomplete-rails.js" %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
+    <div class="container-fluid">
+          <div class="container-fluid">
+              <header>
+                <div class="logo pull-left col-md-6 col-sm-12">
+                    <%= image_tag "logo.png" ,:size => '150x70' %>
+                </div>
+                <div class="logo pull-right col-md-6 col-sm-12">
+                  
+                </div>
+                <p class="clearfix"></p>
+              </header>
+              <nav class="navbar navbar-default">
+                  <div class="container-fluid">
+                    <div class="navbar-header">
+                      <a class="navbar-brand" href="#">ZASD</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                          <li>
+                     
+                       <% if user_signed_in? %>
+                          <li><a href="#">Friend</a></li>
+                          <li>
+                             <a  href="/groups">Groups</a>
+                          </li>
+                          <li><a href="#">Orders</a></li>
+                         <% else %>
+                          <li>  <%= link_to('Login', new_user_session_path)  %> </li>
+                          <li>  <%= link_to('Register', new_user_registration_path)  %></li>
+                      <% end %>
 
-<%= yield %>
+                    </ul>
+                       <% if user_signed_in? %>
+                        <ul class="nav navbar-nav pull-right">
+                          <li class="imgusr">
+                         
+                          </li>
+                           <li>
+                           </li>
+                          <li>  </li>
+                          </ul>
+                      <% end %>
 
+                  </div>
+                </nav>
+				 <div class="content ">
+				<%= yield %>
+				 </div>
+          </div>
+        </div>
+        <div class="navbar navbar-default" style="text-align:center">
+          <div class="footer">
+            <p>Copy right &copy; ZASD 2016 </p>
+          </div>
+        </div>
 </body>
 </html>
