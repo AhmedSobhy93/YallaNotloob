@@ -48,7 +48,11 @@
                           <li class="imgusr">
                          
                           </li>
+                           
                            <li>
+							  <a>Welcome<strong> <%= current_user.firstName %></strong></a>
+							</li>
+							<li>
                            		<%= link_to "LogOut" ,destroy_user_session_path, :method =>'DELETE' %>                          			
                            </li>
                        </ul>
@@ -61,8 +65,8 @@
 				 </div>
           </div>
         </div>
-        <div class="navbar navbar-default" style="text-align:center">
-          <div class="footer">
+        <div class="navbar navbar-default " style="text-align:center">
+          <div class="footer container-fluid ">
             <p>Copy right &copy; ZASD 2016 </p>
           </div>
         </div>
