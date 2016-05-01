@@ -1,5 +1,6 @@
 class OrderMembersController < ApplicationController
   before_action :set_order_member, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /order_members
   # GET /order_members.json

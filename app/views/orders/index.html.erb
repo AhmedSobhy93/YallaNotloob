@@ -1,26 +1,30 @@
 <p id="notice"><%= notice %></p>
-
+<div class="container">
 <h1>Listing Orders</h1>
 
-<table>
+<table class="table table-striped" >
   <thead>
     <tr>
+      <th>#</th>
       <th>Order for</th>
       <th>Status</th>
       <th>Resturant</th>
-      <th colspan="3">Action</th>
-      <th>Menu image</th>
+      <th>Invited</th>
+      <th>Joined</th>
+      <th>Action</th>
     </tr>
   </thead>
 
   <tbody>
     <% @orders.each do |order| %>
-      <tr>
+      <tr class="">
+        <td><%= order.id        %></td>
         <td><%= order.order_for %></td>
-        <td><%= order.status %></td>
+        <td><%= order.status    %></td>
         <td><%= order.resturant %></td>
-        <td><%= link_to 'view', order %> <%= link_to 'Finish', order %> <%= link_to 'Cancel', order %></td>
-        <td><%= order.menu_image %></td>
+        <td><%= order.order_members.count%></td>
+        <td><%= order.order_members.count(:joined)%></td>
+        <td><%= link_to 'view', order %> <%= link_to 'Finish', order %> <%= link_to 'Cancel', order %></td> 
       </tr>
     <% end %>
   </tbody>
@@ -29,3 +33,4 @@
 <br>
 
 <%= link_to 'New Order', new_order_path %>
+</div>

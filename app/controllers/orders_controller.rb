@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /orders
   # GET /orders.json
@@ -52,6 +53,15 @@ class OrdersController < ApplicationController
       end
     end
   end
+
+  def setFinished
+    @order.update(status: 'finished')
+    respond_to do |format|
+      format.html { redirect_to @order }
+      format.json { head :no_content }
+    end
+  end
+
 
   # DELETE /orders/1
   # DELETE /orders/1.json
