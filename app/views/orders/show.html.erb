@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
-
+<div class="col-4">
 <p>
   <strong>Order Id:</strong>
   <%= @order.id %>
-</p> 
+</p>
 
 <p>
   <strong>Order for:</strong>
@@ -19,16 +19,18 @@
   <strong>Resturant:</strong>
   <%= @order.resturant %>
 </p>
-
 <p>
-  <strong>Menu image:</strong>
-  <%= @order.menu_image %>
+  <strong>Menu image:</strong><br>
+  <%= image_tag @order.avatar.url(:thumb) %>
 </p>
 
 <!--<%= image_tag @order.avatar.url %>-->
 <!--<%= image_tag @order.avatar.url(:medium) %>-->
-<%= image_tag @order.avatar.url(:thumb) %>
-
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
+</div>
+
+<div class="col-4">
+  Friends Invited
+</div>
