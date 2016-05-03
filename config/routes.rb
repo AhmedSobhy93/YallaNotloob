@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   root 'users#home'
 
   get 'users/home' => 'users#home'
+  # config/routes.rb
+  mount Judge::Engine => '/judge'
 
   # get "users", controller: 'Users', action: :home
 

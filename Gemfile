@@ -49,7 +49,7 @@ group :development do
 	#devise gem for sign_up and sign_in
 	gem 'devise'
 
-
+  gem 'judge'
 	
 gem 'autoprefixer-rails'
 
