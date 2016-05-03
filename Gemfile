@@ -56,5 +56,7 @@ gem 'autoprefixer-rails'
 
   gem 'omniauth'
   gem 'omniauth-facebook'
+
+  gem 'rails-observers'
 end
 

@@ -16,6 +16,7 @@ class FriendsController < ApplicationController
   # GET /friends/new
   def new
     @friend = Friend.new
+    @friend = Friend.all
   end
 
   # GET /friends/1/edit
@@ -72,4 +73,10 @@ class FriendsController < ApplicationController
     def friend_params
       params.require(:friend).permit(:user_id, :friend_id)
     end
+
+
+    def show_friend
+      @friend = Friend.find(params[:id])
+    end
+
 end

@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 20160501153521) do
     t.datetime "updated_at",                                      null: false
     t.string   "provider",               limit: 255
     t.string   "uid",                    limit: 255
-    t.string   "name",                   limit: 100
     t.string   "firstName",              limit: 255
     t.string   "secondName",             limit: 255
     t.integer  "phoneNumber",            limit: 4

@@ -5,4 +5,5 @@ class UsersController < ApplicationController
     	@orders = Order.all
     	#where(user_id: params[:id])
 	end	
+
 end
