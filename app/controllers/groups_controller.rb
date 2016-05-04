@@ -10,8 +10,16 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
+
+    if(params[:id] != nil)
+    @groupParam = Group.find(params[:id])
+    @GM = GroupMember.where(group_id: params[:id])
+
+  end
+    @group_member = GroupMember.new
     @group = Group.new
     @groups = Group.where(user_id: current_user.id)
+  
   end
 
   # GET /groups/1
@@ -20,6 +28,12 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @GM = GroupMember.where(group_id: params[:id])
     @group_member = GroupMember.new
+    @group = Group.new
+    @groups = Group.where(user_id: current_user.id)
+
+    @groupParam = Group.find(params[:id])
+
+   render('index')
   end
 
   # GET /groups/new
@@ -34,17 +48,24 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(group_params)
-
     respond_to do |format|
-      if @group.save
+      # @group = Group.new(group_params)
+      @myGr = Group.where(user_id: current_user.id, name: group_params[:name])
+
+    if group_params[:name] == "" or @myGr!=nil
+      #@test == group_params[:name]
+       #allGroups.exclude?(group_params[:name])
+      format.html { redirect_to groups_url, notice: 'Sorry it is empty or repeated, please enter valid data' }
+      format.json { render :show, status: :created, location: @group } 
+     else   
+
+      @group = Group.new(group_params)
+      @group.save
         format.html { redirect_to groups_url, notice: 'Group was successfully created.' }
-        format.json { render :show, status: :created, location: @group }
-      else
-        format.html { render :new }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
+        format.json { render :show, status: :created, location: @group } 
     end
+ 
+  end
   end
 
   # PATCH/PUT /groups/1

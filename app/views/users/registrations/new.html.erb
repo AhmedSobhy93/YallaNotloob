@@ -4,18 +4,8 @@
   <%= devise_error_messages! %>
 
 <div class="field form-group">
-    <%= f.label :First_Name %><br />
-    <%= f.text_field :firstName, autofocus: true,class: "form-control" %>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :Second_Name %><br />
-    <%= f.text_field :secondName, autofocus: true,class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.number_field :phoneNumber, autofocus: true,class: "form-control" %>
+    <%= f.label :Name %><br />
+    <%= f.text_field :name, autofocus: true,class: "form-control" %>
   </div>
 
   <div class="field">
@@ -38,6 +28,7 @@
 
   <div class="actions">
     <%= f.submit "Sign up" ,class: "btn btn-primary" %>
+    
   </div>
 <% end %>
 

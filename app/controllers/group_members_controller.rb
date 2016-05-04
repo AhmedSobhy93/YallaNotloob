@@ -1,6 +1,5 @@
 class GroupMembersController < ApplicationController
   before_action :set_group_member, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
 
   # GET /group_members
   # GET /group_members.json
@@ -25,20 +24,30 @@ class GroupMembersController < ApplicationController
   # POST /group_members
   # POST /group_members.json
   def create
-    @test = User.where(name: group_member_params[:user_id]).ids
-    @test.each do |t|
-      @group_member = GroupMember.new(user_id: t,group_id: group_member_params[:group_id])
-    end
-
     respond_to do |format|
-      if @group_member.save
-        format.html { redirect_to groups_url notice: 'Group member was successfully created.' }
+######user_id == name of user
+    @test = User.where(name: group_member_params[:user_id]).ids
+
+    # @myGr = GroupMember.where(group_id: group_member_params[:group_id], user_id: User.where(name: group_member_params[:user_id]).ids)
+
+    @gTest = Group.find(group_member_params[:group_id])
+
+
+    @test.each do |t|
+    @myGr = GroupMember.where(group_id: group_member_params[:group_id], user_id: t)
+
+    if group_member_params[:user_id] != nil or  @myGr == nil
+        @group_member = GroupMember.new(user_id: t,group_id: group_member_params[:group_id])
+        @group_member.save
+        format.html { redirect_to @gTest , notice: 'Group member was successfully created.' }
         format.json { render :show, status: :created, location: @group_member }
-      else
-        format.html { render :new }
-        format.json { render json: @group_member.errors, status: :unprocessable_entity }
-      end
     end
+    end
+    if 
+        format.html { redirect_to @gTest , notice: 'Sorry please enter valid data' }
+        format.json { render :show, status: :created, location: @group_member }
+    end 
+  end
   end
 
   # PATCH/PUT /group_members/1
@@ -59,8 +68,9 @@ class GroupMembersController < ApplicationController
   # DELETE /group_members/1.json
   def destroy
     @group_member.destroy
+    @group = Group.find(@group_member.group_id)
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group member was successfully destroyed.' }
+      format.html { redirect_to @group , notice: 'Group member was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

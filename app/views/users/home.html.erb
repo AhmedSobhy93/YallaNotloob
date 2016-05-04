@@ -1,30 +1,36 @@
 
 <body>
-<div class="container">		
+<div class="container">
 
 <div id="user_nav">
 
   <% if current_user %>
+<<<<<<< HEAD
 
     <!-- Welcome <strong><%= current_user.firstName %></strong>! -->
+=======
+    Signed in as <strong><%= current_user.firstName %></strong>!
+	<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+
+>>>>>>> ec825fafaa43a873fe9739814cb387af6c702315
   <% else %>
     <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
 </div>
 <br><br>
 
-	<div class="row" >	
+	<div class="row" >
 		<div class="col-md-6">
 		<table class="table" >
 			<tr class="danger">
 				<b> Latest Orders </b>
-			</tr>	
+			</tr>
 			<%  @orders.each do |order| %>
 			<tr class="success">
 				<td> <%= link_to order.order_for+" on "+ order.created_at.strftime('%m/%d/%Y'), order %> </td>
-			</tr>	
-		</table>	
-		<% end %>	
+			</tr>
+		</table>
+		<% end %>
 		</div>
 
 		<div class="col-md-6">
@@ -32,14 +38,16 @@
 			<tr>
 				<b>Friends Activity</b>
 			</tr>
+
 				<%  @friends.each do |friend| %>
 				<%  friend.orders.each do |tt| %>
-			<tr class="success">	
-				<td> 
+			<tr class="success">
+				<td>
 					<%= friend.name+" has created an order for "+tt.order_for+" from "+tt.resturant %>
 				</td>
 			</tr>
 			<% end %>
+<<<<<<< HEAD
 			<% end %>	
 		</table>	
 		</div>	
@@ -61,3 +69,11 @@
 </div>
 	</body>	
 
+=======
+			<% end %>
+		</table>
+		</div>
+	</div>
+</div>
+	</body>
+>>>>>>> ec825fafaa43a873fe9739814cb387af6c702315
