@@ -7,4 +7,12 @@ class UsersController < ApplicationController
     	@friendOrders = Order.where(user_id: Friend.where(user_id: current_user.id))
 
 	end	
+	
+	def index 
+		@users = User.all
+	end
+
+	def show 
+		@user = current_user
+	end
 end
