@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :friends
   resources :group_members
   resources :groups
+
+  resources :friendships
+
   # devise_for :users, :controllers => { registrations: 'registrations' }
   devise_for :users , :controllers => {registrations: 'registrations', :omniauth_callbacks => "users/omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.
@@ -15,6 +18,8 @@ Rails.application.routes.draw do
   root 'users#home'
 
   get 'users/home' => 'users#home'
+  get 'users/show' => 'users#show'
+  get 'users/index' => 'users#index'
 
   # get "users", controller: 'Users', action: :home
 
@@ -70,5 +75,8 @@ Rails.application.routes.draw do
 #   devise_scope :user do
 #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
 # end
+get 'auth/:provider/callback', to: 'sessions#create'
+get 'logout', to: 'sessions#destroy'
+
 
 end
