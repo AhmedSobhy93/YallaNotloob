@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action  :set_order,only: [:show, :edit, :update, :destroy,:cancel]
   before_action :authenticate_user!
 
   # GET /orders
@@ -12,6 +12,30 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
   end
+
+  # update Order status
+  def cancel
+   @order = Order.find_by(id: params[:id])
+   @order.update_attributes(:status => 'Cancelled')
+   @order.save()
+   respond_to do |format|
+      format.html { redirect_to orders_url }
+      format.json { head :no_content }
+      format.js   { render :layout => false }
+   end
+ end
+
+ # update Order status
+ def finish
+  @order = Order.find_by(id: params[:id])
+  @order.update_attributes(:status => 'Finished')
+  @order.save()
+  respond_to do |format|
+     format.html { redirect_to orders_url }
+     format.json { head :no_content }
+     format.js   { render :layout => false }
+  end
+end
 
   # GET /orders/new
   def new
