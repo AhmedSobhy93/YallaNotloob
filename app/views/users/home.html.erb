@@ -5,14 +5,12 @@
 <div id="user_nav">
 
   <% if current_user %>
-<<<<<<< HEAD
 
     <!-- Welcome <strong><%= current_user.firstName %></strong>! -->
-=======
+
     Signed in as <strong><%= current_user.firstName %></strong>!
 	<%= link_to "Log out", destroy_user_session_path, method: :delete %>
 
->>>>>>> ec825fafaa43a873fe9739814cb387af6c702315
   <% else %>
     <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
@@ -47,7 +45,6 @@
 				</td>
 			</tr>
 			<% end %>
-<<<<<<< HEAD
 			<% end %>	
 		</table>	
 		</div>	
@@ -69,11 +66,3 @@
 </div>
 	</body>	
 
-=======
-			<% end %>
-		</table>
-		</div>
-	</div>
-</div>
-	</body>
->>>>>>> ec825fafaa43a873fe9739814cb387af6c702315
