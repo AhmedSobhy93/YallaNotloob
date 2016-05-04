@@ -24,13 +24,21 @@
         <td><%= order.resturant %></td>
         <td><%= order.order_members.count%></td>
         <td><%= order.order_members.count(:joined)%></td>
-        <td><%= link_to 'view', order %> <%= link_to 'Finish', order %> <%= link_to 'Cancel', order %></td> 
+        <td>
+        <%= link_to 'view', order %>
+        <% if order.status != 'Finished' and order.status != 'Cancelled'%>
+          <a href="/orders/<%= order.id %>/finish">Finish</a>
+          <a href="/orders/<%= order.id %>/cancel">Cancel</a></td>
+        <%  end %>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<!-- <div class="glyphicon glyphicon-plus-sign"> -->
+<a class="glyphicon glyphicon-plus-sign"> </a>
 <%= link_to 'New Order', new_order_path %>
+<!-- </div> -->
 </div>

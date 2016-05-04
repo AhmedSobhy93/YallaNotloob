@@ -15,8 +15,12 @@ Rails.application.routes.draw do
   root 'users#home'
 
   get 'users/home' => 'users#home'
+
+  get 'orders/:id/cancel' => 'orders#cancel'
+  get 'orders/:id/finish' => 'orders#finish'
   # config/routes.rb
   mount Judge::Engine => '/judge'
+
 
 #   GoogleAuthExample::Application.routes.draw do
 #   get 'auth/:provider/callback', to: 'sessions#create'
@@ -28,6 +32,7 @@ Rails.application.routes.draw do
 
 #   root to: "home#show"
 # end
+
 
   # get "users", controller: 'Users', action: :home
 
@@ -79,7 +84,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  
+
 #   devise_scope :user do
 #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
 # end
