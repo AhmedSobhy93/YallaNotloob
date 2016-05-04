@@ -49,18 +49,22 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     respond_to do |format|
+      # @group = Group.new(group_params)
+      @myGr = Group.where(user_id: current_user.id, name: group_params[:name])
 
-    @group = Group.new(group_params)
+    if group_params[:name] == "" or @myGr!=nil
+      #@test == group_params[:name]
+       #allGroups.exclude?(group_params[:name])
+      format.html { redirect_to groups_url, notice: 'Sorry it is empty or repeated, please enter valid data' }
+      format.json { render :show, status: :created, location: @group } 
+     else   
 
-    if group_params[:name] != nil
-        @group.save
+      @group = Group.new(group_params)
+      @group.save
         format.html { redirect_to groups_url, notice: 'Group was successfully created.' }
-        format.json { render :show, status: :created, location: @group }
+        format.json { render :show, status: :created, location: @group } 
     end
-    if
-        format.html { redirect_to groups_url, notice: 'Sorry it is empty, please enter valid data' }
-        format.json { render :show, status: :created, location: @group }
-    end
+ 
   end
   end
 

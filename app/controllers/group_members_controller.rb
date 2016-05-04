@@ -25,13 +25,19 @@ class GroupMembersController < ApplicationController
   # POST /group_members.json
   def create
     respond_to do |format|
-
+######user_id == name of user
     @test = User.where(name: group_member_params[:user_id]).ids
+
+    # @myGr = GroupMember.where(group_id: group_member_params[:group_id], user_id: User.where(name: group_member_params[:user_id]).ids)
+
     @gTest = Group.find(group_member_params[:group_id])
 
+
     @test.each do |t|
-    @group_member = GroupMember.new(user_id: t,group_id: group_member_params[:group_id])
-    if group_member_params[:user_id] != nil
+    @myGr = GroupMember.where(group_id: group_member_params[:group_id], user_id: t)
+
+    if group_member_params[:user_id] != nil or  @myGr == nil
+        @group_member = GroupMember.new(user_id: t,group_id: group_member_params[:group_id])
         @group_member.save
         format.html { redirect_to @gTest , notice: 'Group member was successfully created.' }
         format.json { render :show, status: :created, location: @group_member }

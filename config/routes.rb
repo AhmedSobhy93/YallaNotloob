@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :group_members
   resources :groups
   # devise_for :users, :controllers => { registrations: 'registrations' }
-  devise_for :users , :controllers => {registrations: 'registrations', :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users , :controllers => {registrations: 'registrations', :omniauth_callbacks => "omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -17,6 +17,17 @@ Rails.application.routes.draw do
   get 'users/home' => 'users#home'
   # config/routes.rb
   mount Judge::Engine => '/judge'
+
+#   GoogleAuthExample::Application.routes.draw do
+#   get 'auth/:provider/callback', to: 'sessions#create'
+#   get 'auth/failure', to: redirect('/')
+#   get 'signout', to: 'sessions#destroy', as: 'signout'
+
+#   resources :sessions, only: [:create, :destroy]
+#   resource :home, only: [:show]
+
+#   root to: "home#show"
+# end
 
   # get "users", controller: 'Users', action: :home
 
