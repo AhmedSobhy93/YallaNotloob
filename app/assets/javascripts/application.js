@@ -16,3 +16,7 @@
 
 //= require bootstrap-sprockets
 //= require_tree .
+
+//= require underscore
+//= require json2
+//= require judge
