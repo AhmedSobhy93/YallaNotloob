@@ -1,11 +1,11 @@
-<p>Username: <%=h @user.firstName %></p>
+<p>Username: <%=h @user.name %></p>
 
 <h2>Friends</h2>
 <% if @user.friendships.any? %>
 <ul>
   <% @user.friendships.each do |friendship| %>
     <li>
-      <%=h friendship.friend.firstName %>
+      <%=h friendship.friend.name %>
       - <%= link_to "remove", friendship, :method => :delete %>
     </li>
   <% end %>

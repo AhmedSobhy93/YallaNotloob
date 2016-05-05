@@ -39,7 +39,7 @@ class GroupMembersController < ApplicationController
     if group_member_params[:user_id] != nil or  @myGr == nil
         @group_member = GroupMember.new(user_id: t,group_id: group_member_params[:group_id])
         @group_member.save
-        format.html { redirect_to @gTest , notice: 'Group member was successfully created.' }
+        format.html { redirect_to @gTest , notice: '' }
         format.json { render :show, status: :created, location: @group_member }
     end
     end

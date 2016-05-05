@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :friends
   resources :group_members
   resources :groups
-
   resources :friendships
 
   # devise_for :users, :controllers => { registrations: 'registrations' }
@@ -15,12 +14,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+  # get '/auth/google' => 'sessions#create'
+
   root 'users#home'
 
   get 'users/home' => 'users#home'
   get 'users/show' => 'users#show'
   get 'users/index' => 'users#index'
-
 
   get 'orders/:id/cancel' => 'orders#cancel'
   get 'orders/:id/finish' => 'orders#finish'
