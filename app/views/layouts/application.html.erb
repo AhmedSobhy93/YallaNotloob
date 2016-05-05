@@ -31,7 +31,8 @@
                           <li>
                      
                        <% if user_signed_in? %>
-                          <li><a href="/users/show">Friend</a></li>
+                          <li><a href="/users/show">My Friends</a></li>
+                          <li><a href="/users/index">Make Friends</a></li>
                           <li>
                              <a  href="/groups">Groups</a>
                           </li>
@@ -50,7 +51,7 @@
                           </li>
                            
                            <li>
-							  <a>Welcome<strong> <%= current_user.name %></strong></a>
+							  <a>Welcome<strong> <%= current_user.firstName %></strong></a>
 							</li>
 							<li>
                            		<%= link_to "LogOut" ,destroy_user_session_path, :method =>'DELETE' %>                          			
